@@ -158,4 +158,31 @@ router.post('/delete', utils.loginRequired, function(req, res, next) {
 
 });
 
+router.get('/search', function(req, res) {
+  const term = req.query.search;
+
+  Code.findOne({ code: term, is_stolen: true }, function(err, obj) {
+    if(err) {
+      return res.json({
+        'state': false,
+        'msg': err
+      })
+    }
+
+    if(!obj) {
+      return res.json({
+        'state': true,
+        'msg': 'No Item/Product/Gadget with the Unique ID Found',
+        'empty': true
+      })
+    }
+
+    res.json({
+      'state': true,
+      'msg': 'Product Found',
+      'code': obj
+    })
+  })
+})
+
 module.exports = router;

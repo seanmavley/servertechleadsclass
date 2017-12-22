@@ -12,6 +12,9 @@ let CodeSchema = new Schema({
     type: Number,
     index: true
   },
+  contact: {
+    type: Number
+  },
   createdByName: String,
   is_stolen: Boolean,
   createdAt: {
