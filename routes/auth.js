@@ -133,7 +133,7 @@ router.post('/register', function(req, res) {
                                 let template = handlebars.compile(html);
                                 let replacements = {
                                     fullName: user.fullName,
-                                    link: config.frontend_url + 'auth/verify-email/' + verification_token,
+                                    link: config.frontend_url + 'verify-email/' + verification_token,
                                     site_name: config.site_name
                                 };
 
@@ -219,7 +219,7 @@ router.post('/resend-verification', function(req, res) {
                 let template = handlebars.compile(html);
                 let replacements = {
                     fullName: user.fullName,
-                    link: config.frontend_url + 'auth/verify-email/' + verification_token,
+                    link: config.frontend_url + 'verify-email/' + verification_token,
                     site_name: config.site_name
                 };
 
@@ -447,7 +447,7 @@ router.post('/reset-password-request', function(req, res) {
                 let template = handlebars.compile(html);
                 let replacements = {
                     fullName: user.fullName,
-                    link: config.frontend_url + 'auth/reset-password/' + reset_token
+                    link: config.frontend_url + 'reset-password/' + reset_token
                 };
 
                 let mailOptions = {
@@ -523,7 +523,7 @@ router.post('/reset-password', function(req, res) {
                             // handlebars replaces parts in html for us
                             let template = handlebars.compile(html);
                             let replacements = {
-                                link: config.site_url + 'auth/login'
+                                link: config.site_url + 'auth'
                             };
 
                             let mailOptions = {
